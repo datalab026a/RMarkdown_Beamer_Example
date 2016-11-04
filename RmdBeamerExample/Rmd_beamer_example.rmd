@@ -6,8 +6,6 @@ date: '`r Sys.Date()`'
 fontsize: 10pt
 output: 
   beamer_presentation:
-#    toc: true
-#    incremental: true
     keep_tex: true
     slide_level: 3
     highlight: tango
@@ -16,7 +14,6 @@ output:
       in_header: ./texf/header.tex
       before_body: ./texf/prefix.tex
       after_body: ./texf/suffix.tex
-    template: ./texf/default_beamer.tex
 ---
 
 # 学术幻灯片制作
