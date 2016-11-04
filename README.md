@@ -1,1 +1,1 @@
-"# RMarkdown_Beamer_Example" 
+R Markdown Beamer Example 
