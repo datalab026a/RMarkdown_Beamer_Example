@@ -1,1 +1,2 @@
-R Markdown Beamer Example 
+One R Markdown Beamer Example.
+Enjoy it. 
