@@ -1,0 +1,62 @@
+\usepackage{xeCJK}
+\usepackage{tikz,graphicx}    
+\usepackage{booktabs}       
+\usepackage[normalem]{ulem}   
+\usepackage{rotating}       
+\usepackage{cleveref}       
+\usepackage{hyperref}       
+\usepackage[absolute,overlay]{textpos}
+\usepackage{xltxtra} % “Extras” for LATEX users of XETEX
+
+\hypersetup{pdfpagemode=FullScreen}
+\hypersetup{colorlinks=false}
+
+
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols in beamer
+\setbeamertemplate{title page}[empty]    % Setting up your own title page template
+\setbeamercovered{transparent}           % Transparency in itemizing
+
+\addtobeamertemplate{title page}{
+\tikz[overlay,remember picture] \node[opacity=0.3, at=(current page.center)] {
+   \includegraphics[width=\paperwidth,height=\paperheight,]{./figureFiles/znufebg169.jpg}};
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \institute{
+%   {中南财经政法大学} \\
+%   {\tiny 统计与数学学院} \\
+%   \smallskip                                          
+%   \emph {\tiny datalab026a@qq.com}                      
+% }
+
+% \institute{
+%     {Zhongnan University of Economics and Law} \\
+%     {\tiny School of Statistics and Mathematics} \\
+%     \smallskip                                          
+%     \emph {\scriptsize datalab026a@qq.com}                      
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./texFiles/beamer_header_fonts2.tex}
+\input{./texFiles/beamer_header_color2.tex}
+\input{./texFiles/beamer_header_block2.tex}
+\input{./texFiles/beamer_header_sidebar2.tex}
+
+\input{./texFiles/beamer_header_math.tex}
+\input{./texFiles/beamer_header_figures.tex}
+\input{./texFiles/beamer_header_footline.tex}
+
+\AtBeginPart{}
+
+\AtBeginSection[]{
+  \begin{frame}[c]
+    \begin{center}
+      \setbeamerfont{section in toc}{family=\sffamily,size=\LARGE} 
+      \tableofcontents[sectionstyle=show/hide,subsectionstyle=hide/show/hide]
+    \end{center}
+  \end{frame}
+}
+\AtBeginSubsection{}
+\AtBeginSubsubsection{}
+\setlength{\emergencystretch}{0em}
+\setlength{\parskip}{0pt}

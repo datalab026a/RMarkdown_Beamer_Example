@@ -1,23 +1,31 @@
-\documentclass[10pt,ignorenonframetext,]{beamer}
+\documentclass[10pt,ignorenonframetext,aspectratio=169,t,]{beamer} % aspectratio=169,t,
+
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
+
 \beamertemplatenavigationsymbolsempty
+
 \usepackage{lmodern}
+
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+
 \else % if luatex or xelatex
-\ifxetex
-\usepackage{mathspec}
-\else
-\usepackage{fontspec}
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
 \fi
-\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
+
+
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -25,7 +33,14 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
+
 \newif\ifbibliography
+\hypersetup{
+            pdftitle={基于RMarkdown快速制作学术幻灯片},
+            pdfauthor={魏江勇 (Jiangyong Wei)},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -33,39 +48,39 @@
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
 % Add ',fontsize=\small' for more characters per line
 \usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
+\definecolor{shadecolor}{RGB}{48,48,48}
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{{#1}}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{{#1}}}
-\newcommand{\ImportTok}[1]{{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{{#1}}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{{#1}}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{{#1}}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{{#1}}}}
-\newcommand{\BuiltInTok}[1]{{#1}}
-\newcommand{\ExtensionTok}[1]{{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{{#1}}}
-\newcommand{\RegionMarkerTok}[1]{{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{{#1}}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
-\newcommand{\NormalTok}[1]{{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{{#1}}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{{#1}}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{{#1}}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{{#1}}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{{#1}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{{#1}}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{{#1}}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{{#1}}}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -81,76 +96,60 @@
 \raggedbottom
 
 \AtBeginPart{
-\let\insertpartnumber\relax
-\let\partname\relax
-\frame{\partpage}
+  \let\insertpartnumber\relax
+  \let\partname\relax
+  \frame{\partpage}
 }
 \AtBeginSection{
-\ifbibliography
-\else
-\let\insertsectionnumber\relax
-\let\sectionname\relax
-\frame{\sectionpage}
-\fi
+  \ifbibliography
+  \else
+    \let\insertsectionnumber\relax
+    \let\sectionname\relax
+    \frame{\sectionpage}
+  \fi
 }
 \AtBeginSubsection{
-\let\insertsubsectionnumber\relax
-\let\subsectionname\relax
-\frame{\subsectionpage}
+  \let\insertsubsectionnumber\relax
+  \let\subsectionname\relax
+  \frame{\subsectionpage}
 }
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
-\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{0}
 \usepackage{xeCJK}
-\usepackage{tikz,graphicx} 		
-\usepackage{booktabs} 			
-\usepackage[normalem]{ulem} 	
-\usepackage{rotating}  			
-\usepackage{cleveref} 			
-\usepackage{hyperref} 			
+\usepackage{tikz,graphicx}    
+\usepackage{booktabs}       
+\usepackage[normalem]{ulem}   
+\usepackage{rotating}       
+\usepackage{cleveref}       
+\usepackage{hyperref}       
 \usepackage[absolute,overlay]{textpos}
-
-\usefonttheme{serif} 
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage{xltxtra} % “Extras” for LATEX users of XETEX
 
 \hypersetup{pdfpagemode=FullScreen}
-\hypersetup{colorlinks=false} 
+\hypersetup{colorlinks=false}
 
-\setCJKmainfont[BoldFont=SimHei, ItalicFont=KaiTi]{Microsoft YaHei}
-\setCJKsansfont{SimHei}
-\setCJKmonofont{FangSong}
 
-\makeatletter
-\newcommand{\srcsize}{\@setfontsize{\srcsize}{5pt}{5pt}}
-\makeatother
-
-\setbeamerfont{title}{family=\sffamily,size=\LARGE} 
-\setbeamerfont{subtitle}{family=\sffamily,size=\small}
-\setbeamerfont{section in toc}{family=\sffamily,size=\large} 
-\setbeamerfont{frametitle}{family=\sffamily}
-\setbeamerfont{author}{size=\small}
-\setbeamerfont{date}{size=\scriptsize}       
-
-\setbeamertemplate{navigation symbols}{}     
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols in beamer
+\setbeamertemplate{title page}[empty]    % Setting up your own title page template
+\setbeamercovered{transparent}           % Transparency in itemizing
 
 \addtobeamertemplate{title page}{
 \tikz[overlay,remember picture] \node[opacity=0.3, at=(current page.center)] {
-   \includegraphics[height=\paperheight,width=\paperwidth]{./img/znufebg.jpg}};
+   \includegraphics[width=\paperwidth,height=\paperheight,]{./figureFiles/znufebg169.jpg}};
 }
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\institute{
-	{中南财经政法大学} \\
-	{\tiny 统计与数学学院} \\
-	\smallskip                                          
-	\emph {\tiny datalab026a@qq.com}                      
-}
+% \institute{
+%   {中南财经政法大学} \\
+%   {\tiny 统计与数学学院} \\
+%   \smallskip                                          
+%   \emph {\tiny datalab026a@qq.com}                      
+% }
 
 % \institute{
 %     {Zhongnan University of Economics and Law} \\
@@ -160,143 +159,14 @@
 % }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\setbeamertemplate{title page}[empty]
-\setbeamercovered{transparent}
+\input{./texFiles/beamer_header_fonts2.tex}
+\input{./texFiles/beamer_header_color2.tex}
+\input{./texFiles/beamer_header_block2.tex}
+\input{./texFiles/beamer_header_sidebar2.tex}
 
-
-
-\definecolor{texpurple}{HTML}{522D80}
-\definecolor{texorange}{HTML}{F66733}
-\definecolor{texblue}{HTML}{2B3856}
-\definecolor{antiquewhite}{rgb}{0.98, 0.92, 0.84}
-\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
-\definecolor{lighttaupe}{rgb}{0.7, 0.55, 0.43}
-\definecolor{mediumtaupe}{rgb}{0.4, 0.3, 0.28}
-\definecolor{taupe}{rgb}{0.28, 0.24, 0.2}
-\definecolor{darktaupe}{rgb}{0.28, 0.24, 0.2}
-\definecolor{camouflagegreen}{rgb}{0.47, 0.53, 0.42}
-
-\setbeamercolor{frametitle}{fg=texpurple,bg=white}
-\setbeamercolor{title}{fg=texpurple,bg=white}
-\setbeamercolor{local structure}{fg=texpurple}
-\setbeamercolor{section in toc}{fg=texpurple,bg=white}
-\setbeamercolor{section in toc shaded}{fg = texpurple}
-\setbeamercolor{subsection in toc}{fg=texblue,bg=white}
-\setbeamercolor{item projected}{fg=texpurple,bg=white}
-\setbeamertemplate{itemize item}{\color{texpurple}$\bullet$}
-\setbeamertemplate{itemize subitem}{\color{texpurple}\scriptsize{$\bullet$}}
-\setbeamercolor{caption}{fg = texpurple}
-\setbeamercolor{caption name}{fg = texpurple}
-\setbeamercolor{normal text}{fg = black}
-
-% block
-\newenvironment<>{problock}[1]{%
-  \begin{actionenv}#2%
-      \def\insertblocktitle{#1}%
-      \par%
-      \mode<presentation>{%
-       \setbeamercolor{block title}{fg=texblue,bg=darktaupe!50!yellow}
-       \setbeamercolor{block body}{fg=black,bg=olive!20}
-       \setbeamercolor{itemize item}{fg=darktaupe}
-       \setbeamercolor{enumerate item}{fg=darktaupe}
-       \setbeamertemplate{itemize item}[triangle]
-     }%
-      \usebeamertemplate{block begin}}
-    {\par\usebeamertemplate{block end}\end{actionenv}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\useoutertheme[right,height=0pt,width=0.12\paperwidth]{sidebar}
-\setbeamertemplate{sidebar canvas right}[horizontal shading][left=aliceblue!80!camouflagegreen,right=white] 
-\setbeamercolor{title in sidebar}{fg=taupe}  
-\setbeamercolor{author in sidebar}{fg=taupe}
-\setbeamercolor{section in sidebar}{fg=lighttaupe}
-\setbeamercolor{section in sidebar shaded}{fg=darktaupe}
-\setbeamercolor{subsection in sidebar}{fg=lighttaupe}
-\setbeamercolor{subsection in sidebar shaded}{fg=darktaupe}
-\setbeamerfont{title in sidebar}{family=\sffamily} 
-\setbeamerfont{author in sidebar}{family=\sffamily} 
-\setbeamerfont{section in sidebar}{family=\sffamily} 
-\setbeamerfont{subsection in sidebar}{family=\sffamily} 
-% \setbeamerfont{title in sidebar}{size=\fontsize{5}{5}\selectfont}
-% \setbeamerfont{author in sidebar}{size=\fontsize{3}{3}\selectfont}
-% \setbeamerfont{section in sidebar}{size=\fontsize{5}{5}\selectfont}
-% \setbeamerfont{subsection in sidebar}{size=\fontsize{4}{4}\selectfont}
-\usetheme[hideothersubsections]{}
-
-
-\newlength\imageheight
-\settoheight\imageheight{\includegraphics[width=0.11\paperwidth]{./img/znufe.png}}
-
-\makeatletter
-\setbeamertemplate{sidebar \beamer@sidebarside}
-  {
-    \vspace*{\imageheight}
-    \beamer@tempdim=\beamer@sidebarwidth%
-    \advance\beamer@tempdim by -6pt%
-    {\usebeamerfont{title in sidebar}%
-        \vskip1.5em%
-        \hskip3pt%
-        \usebeamercolor[fg]{title in sidebar}%
-        \insertshorttitle[width=\beamer@tempdim,center,respectlinebreaks]\par%
-        \vskip1.25em%
-    }%
-    {%
-        \hskip3pt%
-        \usebeamercolor[fg]{author in sidebar}%
-        \usebeamerfont{author in sidebar}%
-        \insertshortauthor[width=\beamer@tempdim,center,respectlinebreaks]\par%
-        \vskip1.25em%
-    }%
-    \insertverticalnavigation{\beamer@sidebarwidth}%
-    \vfill
-    \ifx\beamer@sidebarside\beamer@lefttext%
-    \else%
-    \usebeamercolor{normal text}%
-    \llap{\usebeamertemplate***{navigation symbols}\hskip0.1cm}%
-    \vskip2pt%
-    \fi%
-  }%
-\setbeamertemplate{section in sidebar}%{sidebar theme}
-{%
-  \vbox{%
-    \vskip1ex%
-    \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionheadnumber
-~\insertsectionhead}%
-  }%
-}
-\setbeamertemplate{section in sidebar shaded}%{sidebar theme}
-{%
-  \vbox{%
-    \vskip1ex%
-    \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionheadnumber
-~\insertsectionhead}%
-  }%
-}
-
-\makeatletter
-\addtobeamertemplate{sidebar right}{}{%
-    \begin{tikzpicture}[remember picture,overlay] % 
-        \node[anchor=north east,yshift=2pt] at (current page.north east) {\includegraphics[width=0.11\paperwidth]{./img/znufe.png}};
-    \end{tikzpicture}
-    }
-\makeatother
-
-
-\setbeamertemplate{footline}{% footline add page number
-\hfill\usebeamertemplate***{navigation symbols}
-\hspace{1cm}\insertframenumber{}/\inserttotalframenumber}
-
-\setbeamercolor{footline}{fg=texpurple}
-\setbeamerfont{footline}{series=\bfseries}
-
-\setbeamertemplate{caption}{%
-\begin{beamercolorbox}[wd=\paperwidth, dp=0.5ex, sep=0.2ex, center]{block body}\insertcaption%
-\end{beamercolorbox}%
-}
-
-\newcommand\FootText[1]{
-  \begin{textblock*}{\textwidth}(0pt,\textheight)\raggedright #1 \hspace{20pt}\end{textblock*}}
-
+\input{./texFiles/beamer_header_math.tex}
+\input{./texFiles/beamer_header_figures.tex}
+\input{./texFiles/beamer_header_footline.tex}
 
 \AtBeginPart{}
 
@@ -314,9 +184,9 @@
 \setlength{\parskip}{0pt}
 
 \title{基于RMarkdown快速制作学术幻灯片}
-\subtitle{R Markdown + Beamer = Perfect Academic Presentation!}
-\author{魏江勇}
-\date{2016-11-04}
+\author{魏江勇 (Jiangyong Wei)}
+\institute{中南财经政法大学统计与数学学院, \emph {datalab026a@qq.com}}
+\date{2017-03-05}
 
 \begin{document}
 \frame{\titlepage}
@@ -374,6 +244,9 @@ R Markdown + Beamer \(\Longrightarrow\) Perfect Academic Presentation!
   \item
     \href{http://rmarkdown.rstudio.com/articles_beamer.html}{Moving from
     Beamer to R Markdown}
+  \item
+    \href{http://www.ucl.ac.uk/~ucbpeal/latexposter.html}{LaTeX
+    Templates - Keynote-style Gradient template for Beamer}
   \end{enumerate}
 \end{itemize}
 
@@ -386,7 +259,7 @@ R Markdown + Beamer \(\Longrightarrow\) Perfect Academic Presentation!
 \begin{itemize}
 \tightlist
 \item
-  kniter+ pandoc \includegraphics{./img2/knitr-workflow.png}
+  kniter+ pandoc \includegraphics{./figureFiles/knitr-workflow.png}
 \end{itemize}
 
 \end{frame}
@@ -423,7 +296,7 @@ R Markdown + Beamer \(\Longrightarrow\) Perfect Academic Presentation!
 title: R Markdown + Beamer = Perfect Academic Presentation
 subtitle:  基于RMarkdown快速制作学术幻灯片
 author: Jiangyong Wei
-date: '2016-11-04'
+date: '2017-03-05'
 fontsize: 10pt
 output: 
   beamer_presentation:
@@ -604,7 +477,7 @@ Contents of the second column
         直角三角形的斜边的平方等于两直角边的平方和。
 可以用符号语言表述为：设直角三角形ABC，其中$\angle C=90^\circ$则有
 
-\begin{equation} AB^2=BC^2+AC^2 \end{equation}
+$$AB^2=BC^2+AC^2$$
 
 \end{block}
 
@@ -619,7 +492,7 @@ Contents of the second column
         直角三角形的斜边的平方等于两直角边的平方和。
 可以用符号语言表述为：设直角三角形ABC，其中$\angle C=90^\circ$则有
 
-\begin{equation} AB^2=BC^2+AC^2 \end{equation}
+$$AB^2=BC^2+AC^2$$
 
 \end{problock}
 
@@ -645,6 +518,19 @@ Contents of the second column
 \NormalTok{rmarkdown::}\KeywordTok{render}\NormalTok{(file)}
 \end{Highlighting}
 \end{Shaded}
+
+\end{frame}
+
+\subsection{脚注}
+
+\begin{frame}{脚注}
+
+Here is a footnote reference,\footnote<.->{Here is the footnote.} and
+another.\footnote<.->{Here's one with multiple blocks.}
+
+Here is an inline note.\footnote<.->{Inlines notes are easier to write,
+  since you don't have to pick an identifier and move down to type the
+  note.}
 
 \end{frame}
 

@@ -1,0 +1,14 @@
+\setbeamertemplate{footline}{% footline add page number
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{1cm}\insertframenumber{}/\inserttotalframenumber}
+
+\setbeamercolor{footline}{fg=texpurple}
+\setbeamerfont{footline}{series=\bfseries}
+
+\setbeamertemplate{caption}{%
+\begin{beamercolorbox}[wd=\paperwidth, dp=0.5ex, sep=0.2ex, center]{block body}\insertcaption%
+\end{beamercolorbox}%
+}
+
+\newcommand\FootText[1]{
+  \begin{textblock*}{\textwidth}(0pt,\textheight)\raggedright #1 \hspace{20pt}\end{textblock*}}

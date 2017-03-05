@@ -1,19 +1,20 @@
 ---
 title: 基于RMarkdown快速制作学术幻灯片
-subtitle:  R Markdown + Beamer = Perfect Academic Presentation!
-author: 魏江勇
+author: 魏江勇 (Jiangyong Wei)
+institute: 中南财经政法大学统计与数学学院, \emph {datalab026a@qq.com}
 date: '`r Sys.Date()`'
 fontsize: 10pt
 output: 
   beamer_presentation:
     keep_tex: true
     slide_level: 3
-    highlight: tango
+    highlight: zenburn # tango
     pandoc_args: "--latex-engine=xelatex"
     includes:
-      in_header: ./texf/header.tex
-      before_body: ./texf/prefix.tex
-      after_body: ./texf/suffix.tex
+      in_header: ./texFiles/beamer_header.tex
+      before_body: ./texFiles/beamer_prefix.tex
+      after_body: ./texFiles/beamer_suffix.tex
+    template: ./texFiles/beamer_default.tex
 ---
 
 # 学术幻灯片制作
@@ -40,13 +41,14 @@ R Markdown + Beamer $\Longrightarrow$ Perfect Academic Presentation!
     2. [Presentations with Beamer Overview](http://rmarkdown.rstudio.com/beamer_presentation_format.html)
     3. [Chunk options and package options](http://yihui.name/knitr/options/)
     4. [Moving from Beamer to R Markdown](http://rmarkdown.rstudio.com/articles_beamer.html)
+    5. [LaTeX Templates - Keynote-style Gradient template for Beamer](http://www.ucl.ac.uk/~ucbpeal/latexposter.html)
 
 
 ## 内部原理
 ### 内部原理
 
 * kniter+ pandoc
-![](./img2/knitr-workflow.png)
+![](./figureFiles/knitr-workflow.png)
 
 ## 环境安装
 ### 环境安装
@@ -190,7 +192,7 @@ Contents of the second column
         直角三角形的斜边的平方等于两直角边的平方和。
 可以用符号语言表述为：设直角三角形ABC，其中$\angle C=90^\circ$则有
 
-\begin{equation} AB^2=BC^2+AC^2 \end{equation}
+$$AB^2=BC^2+AC^2$$
 
 \end{block}
 
@@ -201,7 +203,7 @@ Contents of the second column
         直角三角形的斜边的平方等于两直角边的平方和。
 可以用符号语言表述为：设直角三角形ABC，其中$\angle C=90^\circ$则有
 
-\begin{equation} AB^2=BC^2+AC^2 \end{equation}
+$$AB^2=BC^2+AC^2$$
 
 \end{problock}
 
@@ -217,6 +219,19 @@ library(rmarkdown)
 file <- list.files(pattern='.Rmd')
 rmarkdown::render(file)
 ```
+## 脚注
+### 脚注
+
+Here is a footnote reference,[^1] and another.[^longnote]
+
+Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note.]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
 
 ##其它
 ###其它

@@ -1,0 +1,41 @@
+\useoutertheme[right,height=0pt,width=0.12\paperwidth]{sidebar}
+\setbeamertemplate{sidebar canvas right}[vertical shading][bottom=bottomcolour, middle=middlecolour, top=black] 
+% \setbeamertemplate{sidebar canvas right}[horizontal shading][left=bottomcolour!20!white,right=white] 
+
+\setbeamercolor{title in sidebar}{fg=taupe}  
+\setbeamercolor{author in sidebar}{fg=taupe}
+\setbeamercolor{section in sidebar}{fg=lighttaupe}
+\setbeamercolor{section in sidebar shaded}{fg=darktaupe}
+\setbeamercolor{subsection in sidebar}{fg=lighttaupe}
+\setbeamercolor{subsection in sidebar shaded}{fg=darktaupe}
+
+\setbeamerfont{title in sidebar}{family=\sffamily} 
+\setbeamerfont{author in sidebar}{family=\sffamily} 
+\setbeamerfont{section in sidebar}{family=\sffamily} 
+\setbeamerfont{subsection in sidebar}{family=\sffamily} 
+
+\setbeamerfont{title in sidebar}{size=\fontsize{4.5}{4.5}\selectfont}
+\setbeamerfont{author in sidebar}{size=\fontsize{3}{3}\selectfont}
+\setbeamerfont{section in sidebar}{size=\fontsize{5}{5}\selectfont}
+\setbeamerfont{subsection in sidebar}{size=\fontsize{3.5}{3.5}\selectfont}
+
+\usetheme[hideothersubsections]{}
+
+\makeatletter
+\setbeamertemplate{section in sidebar}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar}{\insertsectionheadnumber
+~\insertsectionhead}%
+  }%
+}
+\setbeamertemplate{section in sidebar shaded}%{sidebar theme}
+{%
+  \vbox{%
+    \vskip1ex%
+    \beamer@sidebarformat{3pt}{section in sidebar shaded}{\insertsectionheadnumber
+~\insertsectionhead}%
+  }%
+}
+\makeatother
